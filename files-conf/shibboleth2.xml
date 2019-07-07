@@ -10,7 +10,7 @@
 
     <InProcess logger="native.logger">
         <ISAPI normalizeRequest="true" safeHeaderNames="true">
-            <Site id="1" name="$HOSTNAME"/>
+            <Site id="1" name="_HOSTNAME_"/>
         </ISAPI>
     </InProcess>
  
@@ -23,14 +23,14 @@
  
     <RequestMapper type="Native">
         <RequestMap applicationId="default">
-            <Host name="$HOSTNAME" exportAssertion="true">
+            <Host name="_HOSTNAME_" exportAssertion="true">
                 <Path name="secure" authType="shibboleth" requireSession="true"/>
             </Host>
         </RequestMap>
     </RequestMapper>
  
     <ApplicationDefaults id="default" policyId="default"
-        entityID="https://$HOSTNAME/shibboleth-sp2"
+        entityID="https://_HOSTNAME_/shibboleth-sp2"
         REMOTE_USER="eppn persistent-id targeted-id"
         signing="false" encryption="false">
  
@@ -44,7 +44,7 @@
             <SessionInitiator type="Chaining" Location="/DS" id="DS" relayState="cookie">
                 <SessionInitiator type="SAML2" defaultACSIndex="1" acsByIndex="false" template="bindingTemplate.html"/>
                 <SessionInitiator type="Shib1" defaultACSIndex="5"/>
-                <SessionInitiator type="SAMLDS" URL="$DS"/>
+                <SessionInitiator type="SAMLDS" URL="_DS_"/>
             </SessionInitiator>
 
             <md:AssertionConsumerService Location="/SAML2/POST" index="1"
@@ -97,7 +97,7 @@
             styleSheet="/shibboleth-sp2/main.css"/>
  
         <MetadataProvider type="Chaining">
-            <MetadataProvider type="XML" uri="$DS_META"
+            <MetadataProvider type="XML" uri="_DS_META_"
                  backingFilePath="/etc/shibboleth/ds-metadata.xml" validate="true" reloadInterval="300">
             </MetadataProvider>
   
@@ -113,9 +113,9 @@
  
         <AttributeFilter type="XML" validate="true" path="attribute-policy.xml"/>
  
-        <CredentialResolver type="File" key="/etc/ssl/private/$HOSTNAME.key"
-                            certificate="/etc/ssl/certs/$HOSTNAME.crt"
-                            keyName="$HOSTNAME"/>
+        <CredentialResolver type="File" key="/etc/ssl/private/_HOSTNAME_.key"
+                            certificate="/etc/ssl/certs/_HOSTNAME_.crt"
+                            keyName="_HOSTNAME_"/>
  
     </ApplicationDefaults>
  
