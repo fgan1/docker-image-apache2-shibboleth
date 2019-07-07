@@ -1,5 +1,6 @@
 # It is following RNP tutorial
-## 
+## https://wiki.rnp.br/pages/viewpage.action?pageId=69969868
+
 # In the RNP tutorial the Ubuntu 14:04 is required because da dependency 'libapache2-mod-php5'
 FROM ubuntu:14.04
 
@@ -19,6 +20,7 @@ RUN a2enmod proxy
 RUN a2enmod headers
 RUN a2enmod proxy_http
 
+# Step 12 in the RNP tutorial
 RUN mkdir /var/www/secure
 COPY ./files-conf/index-secure.html /var/www/secure/index.html
 
@@ -32,3 +34,8 @@ RUN sed -i 's/DAEMON_USER=_shibd/DAEMON_USER=root/g' /etc/init.d/shibd
 
 RUN service apache2 start
 RUN service shibd restart
+
+WORKDIR /root
+RUN mkdir files-conf-static
+RUN mkdir files-conf-dinamic
+RUN mkdir scripts
