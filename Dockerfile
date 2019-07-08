@@ -22,7 +22,7 @@ RUN a2enmod proxy_http
 
 # Step 12 in the RNP tutorial
 RUN mkdir /var/www/secure
-COPY ./files-conf/index-secure.html /var/www/secure/index.html
+COPY ./files-conf-static/index-secure.html /var/www/secure/index.html
 
 # Set the correct time 
 RUN apt-get install ntp ntpdate
