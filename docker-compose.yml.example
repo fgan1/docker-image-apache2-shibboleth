@@ -5,20 +5,13 @@ services:
     container_name: apache-shibboleth
     tty: true
     environment:
-	# Service provider domain name 
-      - EXTERNAL_CONF_HOSTNAME_SERVICE_PROVIDER=""
-	# Ip and port from Shibboleth Authentication Application. Eg. ip:port
-      - EXTERNAL_CONF_SHIB_AUTH_APP_IP_PORT=""
-	# Server Discovery Sevice URL
-      - EXTERNAL_CONF_DISCOVERY_SERVICE_URL=""
-	# Server Discovery Sevice metadata URL
-      - EXTERNAL_CONF_DISCOVERY_SERVICE_METADATA_URL=""
-	# Certificate file name into the files-conf-dinamic folder.
-      - EXTERNAL_CONF_SERVICE_PROVIDER_CERTIFICATE_NAME=""
-        # Key file name into the files-conf-dinamic folder.
-      - EXTERNAL_CONF_SERVICE_PROVIDER_KEY_NAME=""
-	# Public  Key file name into the files-conf-dinamic folder. This public key is related on the Aplication; Shibboleth Authentication Application in the Fogbow case. 
-      - EXTERNAL_CONF_SHIB_AUTH_VM_PUBLIC_KEY_NAME=""
+      - EXTERNAL_CONF_HOSTNAME_SERVICE_PROVIDER=
+      - EXTERNAL_CONF_SHIB_AUTH_APP_IP_PORT=
+      - EXTERNAL_CONF_DISCOVERY_SERVICE_URL=
+      - EXTERNAL_CONF_DISCOVERY_SERVICE_METADATA_URL=
+      - EXTERNAL_CONF_SERVICE_PROVIDER_CERTIFICATE_NAME=
+      - EXTERNAL_CONF_SERVICE_PROVIDER_KEY_NAME=
+      - EXTERNAL_CONF_SHIB_AUTH_VM_PUBLIC_KEY_NAME=
     ports:
       - "80:80"
       - "443:443"
