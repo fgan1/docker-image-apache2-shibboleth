@@ -5,7 +5,7 @@ services:
     container_name: apache-shibboleth
     tty: true
     environment:
-      - EXTERNAL_CONF_HOSTNAME_SERVICE_PROVIDER="ed"
+      - EXTERNAL_CONF_HOSTNAME_SERVICE_PROVIDER=""
       - EXTERNAL_CONF_SHIB_AUTH_APP_IP_PORT=""
       - EXTERNAL_CONF_DESCOVERY_SERVICE_URL=""
       - EXTERNAL_CONF_DESCOVERY_SERVICE_METADATA_URL=""
@@ -17,7 +17,7 @@ services:
       - "443:443"
       - "35022:22"
     volumes:
-      - "./files-conf:/root/files-conf-static"
+      - "./files-conf-static:/root/files-conf-static"
       - "./scripts:/root/scripts"
       - "./files-conf-dinamic:/root/files-conf-dinamic"
     command: >
